@@ -1,8 +1,24 @@
 # RecoverX: AI Revenue Recovery Twin
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
-**Razorpay AI Builder Track 3 — AI Revenue Recovery**
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Active%20(HTTPS)-success?style=for-the-badge&logo=cloudflare)](https://crm-ease-permission-weblog.trycloudflare.com)
+[![API Docs](https://img.shields.io/badge/Swagger%20API%20Docs-Interactive-blue?style=for-the-badge&logo=fastapi)](https://crm-ease-permission-weblog.trycloudflare.com/docs)
+[![Pitch Video](https://img.shields.io/badge/5--Min%20Pitch-Interactive%20Player-purple?style=for-the-badge&logo=youtube)](https://crm-ease-permission-weblog.trycloudflare.com/pitch.html)
+[![Tests](https://img.shields.io/badge/Tests-32%2F32%20Passed%20(100%25)-brightgreen?style=for-the-badge)](https://github.com/Nikhil1456-12/RecoverX)
+
+> **Razorpay AI Builder Track 3 — AI Revenue Recovery**
+
+---
+
+## 🌐 Public Live Links
+
+| Destination | Live URL | Description |
+|---|---|---|
+| 🖥️ **Live Web Platform** | [**https://crm-ease-permission-weblog.trycloudflare.com**](https://crm-ease-permission-weblog.trycloudflare.com) | Full React 18 Fintech Dashboard, What-If Lab, Experiment Lab & Leakage DNA |
+| 📖 **Interactive API Docs** | [**https://crm-ease-permission-weblog.trycloudflare.com/docs**](https://crm-ease-permission-weblog.trycloudflare.com/docs) | Swagger UI testing all 28 FastAPI REST endpoints |
+| 🎬 **5-Min Pitch Simulator** | [**https://crm-ease-permission-weblog.trycloudflare.com/pitch.html**](https://crm-ease-permission-weblog.trycloudflare.com/pitch.html) | Self-running pitch presentation with synthesized voiceover & live animations |
+| 🩺 **Service Health Check** | [**https://crm-ease-permission-weblog.trycloudflare.com/health**](https://crm-ease-permission-weblog.trycloudflare.com/health) | Real-time health monitor returning `{"status": "healthy", "demo_mode": true}` |
+
+---
 
 ## Executive Summary & Core Value Proposition
 RecoverX is a next-generation AI-powered revenue recovery system that employs personalized "Recovery Twins" and counterfactual simulation to optimize the recovery of failed payments.
