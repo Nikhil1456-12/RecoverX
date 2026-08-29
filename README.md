@@ -13,9 +13,10 @@
 
 | Destination | Live URL | Description |
 |---|---|---|
-| 🖥️ **Live Web Platform** | [**https://crm-ease-permission-weblog.trycloudflare.com**](https://crm-ease-permission-weblog.trycloudflare.com) | Full React 18 Fintech Dashboard, What-If Lab, Experiment Lab & Leakage DNA |
+| 🚀 **24/7 Permanent GitHub Pages** | [**https://nikhil1456-12.github.io/RecoverX/**](https://nikhil1456-12.github.io/RecoverX/) | Hosted 24/7 directly on GitHub Pages (Always Online) |
+| 🎬 **24/7 5-Min Pitch Simulator** | [**https://nikhil1456-12.github.io/RecoverX/pitch.html**](https://nikhil1456-12.github.io/RecoverX/pitch.html) | Permanent 5-minute interactive video pitch player |
+| 🖥️ **Live Full-Stack Demo** | [**https://crm-ease-permission-weblog.trycloudflare.com**](https://crm-ease-permission-weblog.trycloudflare.com) | Full React 18 Fintech Dashboard, What-If Lab, Experiment Lab & Leakage DNA |
 | 📖 **Interactive API Docs** | [**https://crm-ease-permission-weblog.trycloudflare.com/docs**](https://crm-ease-permission-weblog.trycloudflare.com/docs) | Swagger UI testing all 28 FastAPI REST endpoints |
-| 🎬 **5-Min Pitch Simulator** | [**https://crm-ease-permission-weblog.trycloudflare.com/pitch.html**](https://crm-ease-permission-weblog.trycloudflare.com/pitch.html) | Self-running pitch presentation with synthesized voiceover & live animations |
 | 🩺 **Service Health Check** | [**https://crm-ease-permission-weblog.trycloudflare.com/health**](https://crm-ease-permission-weblog.trycloudflare.com/health) | Real-time health monitor returning `{"status": "healthy", "demo_mode": true}` |
 
 ---
