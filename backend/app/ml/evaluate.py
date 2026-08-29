@@ -1,6 +1,7 @@
 import os
 import json
-from sklearn.metrics import classification_report, confusion_matrix, roc_curve, calibration_curve
+from sklearn.metrics import classification_report, confusion_matrix, roc_curve
+from sklearn.calibration import calibration_curve
 from app.ml.train import load_or_generate_data, DB_PATH
 from app.ml.predict import load_model
 from sklearn.model_selection import train_test_split

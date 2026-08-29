@@ -8,7 +8,7 @@ All policy decisions are deterministic and auditable.
 import json
 import logging
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 
 logger = logging.getLogger(__name__)
@@ -106,7 +106,8 @@ class PolicyEngine:
         policies_evaluated.append('retry_cooldown')
         if context.last_action_at and context.action.startswith('retry'):
             cooldown = timedelta(minutes=self.config.retry_cooldown_minutes)
-            if datetime.utcnow() - context.last_action_at < cooldown:
+            now = datetime.now(timezone.utc) if context.last_action_at.tzinfo else datetime.utcnow()
+            if now - context.last_action_at < cooldown:
                 return PolicyDecisionResult(
                     approved=False,
                     reason=f"Retry cooldown ({self.config.retry_cooldown_minutes} min) not elapsed",

@@ -1,5 +1,5 @@
 import pytest
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from app.services.policy_engine import PolicyEngine, PolicyConfig, PolicyContext
 
 def test_policy_approved_normal_case():
@@ -31,7 +31,7 @@ def test_policy_max_retry_exceeded():
 
 def test_policy_retry_cooldown():
     engine = PolicyEngine(PolicyConfig(retry_cooldown_minutes=15))
-    last_action = datetime.utcnow() - timedelta(minutes=5)
+    last_action = datetime.now(timezone.utc) - timedelta(minutes=5)
     context = PolicyContext(
         transaction_id="tx_123",
         customer_id="cust_123",
