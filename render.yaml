@@ -1,0 +1,13 @@
+﻿services:
+  - type: web
+    name: recoverx
+    runtime: python
+    buildCommand: |
+      cd frontend && npm install && npm run build && cd ../backend && pip install -r requirements.txt && python -m app.scripts.seed_demo_data
+    startCommand: |
+      cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DEMO_MODE
+        value: "true"
+      - key: PYTHON_VERSION
+        value: "3.11.9"
