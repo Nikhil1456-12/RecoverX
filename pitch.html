@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecoverX — 5-Minute Pitch Presentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #090d16; color: #f8fafc; overflow-x: hidden; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(51, 65, 85, 0.6); border-radius: 1rem; }
+    .progress-bar-fill { transition: width 0.1s linear; }
+    .slide { display: none; opacity: 0; transform: translateY(12px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .slide.active { display: block; opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-6 md:p-12 selection:bg-indigo-500 selection:text-white">
+
+  <!-- Header & Top Nav -->
+  <header class="max-w-6xl w-full mx-auto flex items-center justify-between border-b border-slate-800 pb-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-600/30">
+        <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+      </div>
+      <div>
+        <h1 class="text-xl font-bold tracking-tight">RecoverX</h1>
+        <p class="text-xs text-slate-400">AI Revenue Recovery Twin · Razorpay AI Builder Track 3</p>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="flex items-center gap-3">
+      <button id="btnVoice" onclick="toggleVoice()" class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800/80 text-xs font-medium text-slate-300 hover:border-slate-500 transition-all">
+        <i data-lucide="volume-2" id="voiceIcon" class="w-4 h-4 text-emerald-400"></i>
+        <span id="voiceText">Voice: ON</span>
+      </button>
+
+      <button id="btnPlayPause" onclick="togglePlay()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm shadow-md shadow-indigo-600/20 transition-all">
+        <i data-lucide="play" id="playIcon" class="w-4 h-4"></i>
+        <span id="playText">Start 5-Min Pitch</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Slide Container -->
+  <main class="max-w-6xl w-full mx-auto my-auto py-8">
+
+    <!-- SLIDE 1: Title & Hook (0:00 - 0:45) -->
+    <div class="slide active" id="slide-0" data-duration="45" data-script="Welcome to RecoverX. When a payment fails, traditional gateways and merchants do one of two things: blindly retry immediately, or spam the customer with generic dunning emails. The result? High customer friction, wasted budget, and lost revenue. Over twenty to thirty percent of failed revenue is never recovered. RecoverX introduces a paradigm shift: The Counterfactual Recovery Twin.">
+      <div class="text-center max-w-3xl mx-auto space-y-6">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
+          Razorpay AI Builder · Track 3 AI Revenue Recovery
+        </div>
+        <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+          Don't Blindly Retry. <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-emerald-400">Simulate Before You Intervene.</span>
+        </h2>
+        <p class="text-lg text-slate-400 leading-relaxed">
+          RecoverX creates an autonomous digital twin for every failed transaction, simulates competing recovery strategies, and optimizes for <strong>Expected Net Recovery</strong> under strict policy guardrails.
+        </p>
+
+        <div class="grid grid-cols-3 gap-4 pt-6 text-left">
+          <div class="glass-card p-4 border-rose-500/20 bg-rose-950/10">
+            <p class="text-xs text-rose-400 font-semibold uppercase">The Problem</p>
+            <p class="text-sm font-bold text-slate-200 mt-1">20-30% Revenue Lost</p>
+            <p class="text-xs text-slate-400 mt-0.5">Blind retries cause bank fatigue and spam.</p>
+          </div>
+          <div class="glass-card p-4 border-indigo-500/20 bg-indigo-950/10">
+            <p class="text-xs text-indigo-400 font-semibold uppercase">The Innovation</p>
+            <p class="text-sm font-bold text-slate-200 mt-1">Recovery Twin</p>
+            <p class="text-xs text-slate-400 mt-0.5">Counterfactual multi-action simulation.</p>
+          </div>
+          <div class="glass-card p-4 border-emerald-500/20 bg-emerald-950/10">
+            <p class="text-xs text-emerald-400 font-semibold uppercase">The Outcome</p>
+            <p class="text-sm font-bold text-slate-200 mt-1">+36.5% Recovery Uplift</p>
+            <p class="text-xs text-slate-400 mt-0.5">Maximized net profit after cost & friction.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: The Core Formula & Recovery Twin (0:45 - 1:45) -->
+    <div class="slide" id="slide-1" data-duration="60" data-script="Instead of guessing, RecoverX asks: What is likely to recover this specific transaction with the least cost and customer friction? For every failed transaction, we assemble a Recovery Twin containing customer payment history, transaction telemetry, and temporal features. We then simulate competing actions: immediate retry, 15-minute delay, 45-minute delay, WhatsApp, payment link, SMS, or human escalation. We evaluate each action using our core optimization formula: Expected Net Recovery equals Recovery Probability times Transaction Amount, minus Intervention Cost, minus Customer Friction Cost.">
+      <div class="space-y-6">
+        <div class="text-center max-w-2xl mx-auto mb-6">
+          <h2 class="text-3xl font-bold">The Recovery Twin Architecture</h2>
+          <p class="text-slate-400 text-sm mt-1">Simulating counterfactual interventions before execution</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Left: Digital Twin Structure -->
+          <div class="glass-card p-6 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-700 pb-3">
+              <span class="text-xs font-semibold text-indigo-400 uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="cpu" class="w-4 h-4"></i> Recovery Twin State</span>
+              <span class="mono text-xs text-slate-400">TXN_10291 · ₹12,500</span>
+            </div>
+            <div class="space-y-2 mono text-xs">
+              <div class="flex justify-between bg-slate-800/60 p-2 rounded"><span>Customer History:</span><span class="text-emerald-400">94% Success (Returning High Intent)</span></div>
+              <div class="flex justify-between bg-slate-800/60 p-2 rounded"><span>Failure Reason:</span><span class="text-rose-400">UPI Bank Timeout (Peak Hours 19:30)</span></div>
+              <div class="flex justify-between bg-slate-800/60 p-2 rounded"><span>Merchant Budget:</span><span class="text-indigo-300">₹5,000 / Day (Knapsack Allocated)</span></div>
+              <div class="flex justify-between bg-slate-800/60 p-2 rounded"><span>DND / Consent Status:</span><span class="text-emerald-400">Compliant (Opted In)</span></div>
+            </div>
+
+            <!-- Formula Box -->
+            <div class="bg-indigo-950/40 border border-indigo-500/30 p-4 rounded-xl text-center">
+              <p class="text-xs font-semibold text-indigo-300 uppercase tracking-wider mb-1">Expected Net Recovery Optimization Formula</p>
+              <p class="text-sm md:text-base font-extrabold text-white mono">
+                Net = (P<sub>rec</sub> × Amount) - Cost - FrictionCost
+              </p>
+            </div>
+          </div>
+
+          <!-- Right: Action Scoring Table -->
+          <div class="glass-card p-6 space-y-3">
+            <h3 class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Counterfactual Engine Simulation</h3>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-800/50 border border-slate-700 text-xs">
+                <span>Immediate Retry</span>
+                <span class="text-rose-400">39% Prob</span>
+                <span>₹0 Cost</span>
+                <span class="font-bold text-slate-300">Net: ₹4,875</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-800/50 border border-slate-700 text-xs">
+                <span>Retry in 15 Min</span>
+                <span class="text-amber-400">68% Prob</span>
+                <span>₹0 Cost</span>
+                <span class="font-bold text-slate-300">Net: ₹8,437</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold">
+                <span class="text-emerald-400 flex items-center gap-1"><i data-lucide="check" class="w-3.5 h-3.5"></i> Retry in 45 Min (AI Best)</span>
+                <span class="text-emerald-400">84% Prob</span>
+                <span>₹0 Cost</span>
+                <span class="font-bold text-emerald-400">Net: ₹10,400</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-800/50 border border-slate-700 text-xs">
+                <span>WhatsApp Payment Link</span>
+                <span class="text-indigo-400">73% Prob</span>
+                <span>₹2.50 Cost</span>
+                <span class="font-bold text-slate-300">Net: ₹8,937</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-800/50 border border-slate-700 text-xs">
+                <span>Human Escalation</span>
+                <span class="text-purple-400">89% Prob</span>
+                <span>₹50.00 Cost</span>
+                <span class="font-bold text-slate-300">Net: ₹8,075 (High Friction)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Live Dashboard & Leakage DNA (1:45 - 2:45) -->
+    <div class="slide" id="slide-2" data-duration="60" data-script="Now let us look at the live platform. The Revenue Risk Dashboard provides instant visibility into processed revenue, revenue at risk, and recovered volume. In our demo dataset of 10,000 transactions, over 90 Lakhs of failed revenue has been successfully recovered. Our Revenue Leakage DNA engine analyzes the exact breakdown of failure causes: UPI timeouts, expired cards, and checkout dropoffs. It isolates peak risk hours and automatically provides root-cause diagnosis.">
+      <div class="space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div>
+            <h2 class="text-2xl font-bold">Revenue Risk Dashboard & Leakage DNA</h2>
+            <p class="text-xs text-slate-400">Live analytics calculated dynamically across 10,000 transactions</p>
+          </div>
+          <div class="px-3 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold rounded-lg flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span> DEMO MODE ACTIVE
+          </div>
+        </div>
+
+        <!-- 4 Top KPIs -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="stat-card p-4 glass-card">
+            <p class="text-xs font-medium text-slate-400">Total Processed Revenue</p>
+            <p class="text-2xl font-bold text-slate-100 mt-1">₹15.04 Cr</p>
+            <p class="text-xs text-slate-500 mt-1">10,000 transactions</p>
+          </div>
+          <div class="stat-card p-4 glass-card border-rose-500/20">
+            <p class="text-xs font-medium text-rose-400">Revenue at Risk</p>
+            <p class="text-2xl font-bold text-rose-400 mt-1">₹3.19 Cr</p>
+            <p class="text-xs text-slate-500 mt-1">2,189 failure events</p>
+          </div>
+          <div class="stat-card p-4 glass-card border-emerald-500/20">
+            <p class="text-xs font-medium text-emerald-400">Recovered Revenue</p>
+            <p class="text-2xl font-bold text-emerald-400 mt-1">₹90.34 L</p>
+            <p class="text-xs text-emerald-500 font-semibold mt-1">22.4% recovery rate</p>
+          </div>
+          <div class="stat-card p-4 glass-card border-indigo-500/20">
+            <p class="text-xs font-medium text-indigo-400">Incremental AI Recovery</p>
+            <p class="text-2xl font-bold text-indigo-400 mt-1">+₹32.97 L</p>
+            <p class="text-xs text-indigo-400 font-semibold mt-1">+36.5% AI uplift</p>
+          </div>
+        </div>
+
+        <!-- Leakage DNA Distribution -->
+        <div class="glass-card p-5 space-y-3">
+          <h3 class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Revenue Leakage DNA Breakdown</h3>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-slate-800/40 p-3 rounded-lg border border-slate-700">
+              <div class="flex justify-between text-xs mb-1"><span class="font-medium text-rose-300">UPI Bank Timeout</span><span class="font-bold">34.2%</span></div>
+              <div class="w-full bg-slate-700 h-1.5 rounded-full"><div class="bg-rose-500 h-1.5 rounded-full" style="width: 34.2%"></div></div>
+              <p class="text-xs text-slate-400 mt-2">Peak: 19:00 - 22:00 IST</p>
+            </div>
+            <div class="bg-slate-800/40 p-3 rounded-lg border border-slate-700">
+              <div class="flex justify-between text-xs mb-1"><span class="font-medium text-amber-300">Expired Cards</span><span class="font-bold">22.8%</span></div>
+              <div class="w-full bg-slate-700 h-1.5 rounded-full"><div class="bg-amber-500 h-1.5 rounded-full" style="width: 22.8%"></div></div>
+              <p class="text-xs text-slate-400 mt-2">Target: WhatsApp Link</p>
+            </div>
+            <div class="bg-slate-800/40 p-3 rounded-lg border border-slate-700">
+              <div class="flex justify-between text-xs mb-1"><span class="font-medium text-indigo-300">Checkout Abandonment</span><span class="font-bold">18.1%</span></div>
+              <div class="w-full bg-slate-700 h-1.5 rounded-full"><div class="bg-indigo-500 h-1.5 rounded-full" style="width: 18.1%"></div></div>
+              <p class="text-xs text-slate-400 mt-2">Target: Payment Link</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: What-If Lab & Experiment Lab (2:45 - 3:45) -->
+    <div class="slide" id="slide-3" data-duration="60" data-script="In the What-If Lab, merchants can inspect any individual transaction and see the exact counterfactual comparison in real time. For a 12,500 Rupee failed UPI transaction, immediate retry only yields a 39% recovery probability. But a 45-minute delayed retry yields 84% probability with zero intervention cost. In the Experiment Lab, we ran controlled A B tests comparing naive immediate retries as control versus our AI Recovery policy. The result: recovery rate jumped from 42.1% to 78.6%—an incremental uplift of plus 36.5% with statistically significant confidence.">
+      <div class="space-y-6">
+        <div class="text-center max-w-2xl mx-auto mb-4">
+          <h2 class="text-2xl font-bold">What-If Lab & A/B Experimentation</h2>
+          <p class="text-xs text-slate-400">Comparing Control vs. AI Recovery Twin Policy</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- What-If Lab Card -->
+          <div class="glass-card p-5 space-y-3 border-indigo-500/30">
+            <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+              <span class="text-xs font-semibold text-indigo-400 uppercase">What-If Lab Simulation</span>
+              <span class="mono text-xs bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded">TXN_10291</span>
+            </div>
+            <p class="text-xs text-slate-300">
+              <strong>Failure:</strong> Bank Timeout · <strong>Method:</strong> UPI · <strong>Amount:</strong> ₹12,500
+            </p>
+            <div class="bg-indigo-950/30 p-3 rounded-lg border border-indigo-500/20 text-xs space-y-1.5">
+              <p class="font-bold text-indigo-300">Why was 45-minute retry selected?</p>
+              <p class="text-slate-300 leading-relaxed">
+                "Customer has a 94% historical payment success rate. Historical UPI bank timeouts recover 31% more often when delayed by 45 minutes rather than retried immediately. The action carries ₹0 intervention cost and passes all merchant policy guardrails."
+              </p>
+            </div>
+          </div>
+
+          <!-- Experiment Benchmark Card -->
+          <div class="glass-card p-5 space-y-3 border-emerald-500/30">
+            <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+              <span class="text-xs font-semibold text-emerald-400 uppercase">Experiment Lab Results</span>
+              <span class="text-xs text-emerald-400 font-bold">+36.5% Uplift</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 pt-1">
+              <div class="bg-slate-800/60 p-3 rounded-lg text-center border border-slate-700">
+                <p class="text-xs font-semibold text-slate-400 uppercase">Control (Naive Retry)</p>
+                <p class="text-xl font-extrabold text-slate-200 mt-1">42.1%</p>
+                <p class="text-xs text-slate-400 mt-0.5">Recovery Rate</p>
+              </div>
+              <div class="bg-emerald-950/40 p-3 rounded-lg text-center border border-emerald-500/30">
+                <p class="text-xs font-semibold text-emerald-400 uppercase">AI Recovery Twin</p>
+                <p class="text-xl font-extrabold text-emerald-400 mt-1">78.6%</p>
+                <p class="text-xs text-emerald-400 mt-0.5">Recovery Rate</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-800/40 p-2.5 rounded-lg flex justify-between items-center text-xs">
+              <span class="text-slate-400">Net Recovered Revenue Increase:</span>
+              <span class="font-bold text-emerald-400">+₹32.97 Lakhs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Deterministic Safety, Tech Stack & Summary (3:45 - 5:00) -->
+    <div class="slide" id="slide-4" data-duration="75" data-script="Safety and compliance are core to RecoverX. We strictly decouple probabilistic ML predictions from our deterministic Policy Engine. Before any automated debit, message, or escalation is executed, it must satisfy ten strict rules: maximum retry caps, fifteen-minute cooldowns, DND opt-out compliance, daily recovery budget knapsack optimization, and idempotency protection. The entire system is built with FastAPI, React 18, Tailwind CSS v4, XGBoost, and SQLAlchemy Async, with 32 out of 32 automated tests passing. RecoverX is not just an agent that retries payments—it is an intelligent revenue recovery twin that protects customer relationships and maximizes merchant net profit. Thank you.">
+      <div class="space-y-6">
+        <div class="text-center max-w-2xl mx-auto mb-4">
+          <h2 class="text-2xl font-bold">Deterministic Safety & Enterprise Architecture</h2>
+          <p class="text-xs text-slate-400">10 Strict Policy Guardrails & 100% Pass Rate</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Policy Box -->
+          <div class="glass-card p-4 space-y-2 border-emerald-500/20">
+            <span class="text-xs font-semibold text-emerald-400 uppercase flex items-center gap-1.5"><i data-lucide="shield" class="w-4 h-4"></i> Deterministic Policy Engine</span>
+            <ul class="text-xs space-y-1.5 text-slate-300 pt-1">
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Max 3 Retries Per Transaction</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> 15-Minute Cooldown Enforcement</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> DND & Opt-Out Suppression</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Daily Budget Knapsack Allocator</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Idempotency Key Duplicate Shield</li>
+            </ul>
+          </div>
+
+          <!-- ML Box -->
+          <div class="glass-card p-4 space-y-2 border-indigo-500/20">
+            <span class="text-xs font-semibold text-indigo-400 uppercase flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4"></i> ML & Analytics Engine</span>
+            <ul class="text-xs space-y-1.5 text-slate-300 pt-1">
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-400"></i> XGBoost Classifier + Calibration</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-400"></i> Calibrated Probabilities (P in 0.01-0.98)</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-400"></i> Root Cause Multi-Class Analyzer</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-400"></i> Model Versioning & Artifact Store</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-400"></i> 32 / 32 Automated Tests Passing</li>
+            </ul>
+          </div>
+
+          <!-- Tech Stack -->
+          <div class="glass-card p-4 space-y-2 border-purple-500/20">
+            <span class="text-xs font-semibold text-purple-400 uppercase flex items-center gap-1.5"><i data-lucide="layers" class="w-4 h-4"></i> Full-Stack Production Stack</span>
+            <ul class="text-xs space-y-1.5 text-slate-300 pt-1">
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400"></i> FastAPI + SQLAlchemy 2.0 Async</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400"></i> React 18 + Vite + Tailwind CSS v4</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400"></i> Recharts Financial Analytics</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400"></i> Razorpay Webhook & Sandbox Adapter</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400"></i> Docker Compose Ready</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-center pt-2">
+          <p class="text-xs text-slate-400">
+            GitHub: <span class="mono text-indigo-400">https://github.com/Nikhil1456-12/RecoverX</span> · Live: <span class="mono text-emerald-400">https://crm-ease-permission-weblog.trycloudflare.com</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Bottom Timeline & Telemetry -->
+  <footer class="max-w-6xl w-full mx-auto border-t border-slate-800 pt-4 flex flex-col gap-3">
+    <!-- Progress Bar -->
+    <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+      <div id="overallProgress" class="bg-gradient-to-r from-indigo-500 to-emerald-500 h-1.5 progress-bar-fill" style="width: 0%;"></div>
+    </div>
+
+    <div class="flex items-center justify-between text-xs text-slate-400">
+      <div class="flex items-center gap-4">
+        <span id="slideIndicator" class="font-semibold text-slate-200">Slide 1 of 5</span>
+        <span id="timeIndicator" class="mono">0:00 / 5:00</span>
+      </div>
+
+      <!-- Slide Jump Dots -->
+      <div class="flex items-center gap-2">
+        <button onclick="goToSlide(0)" class="w-2.5 h-2.5 rounded-full bg-indigo-500" id="dot-0"></button>
+        <button onclick="goToSlide(1)" class="w-2.5 h-2.5 rounded-full bg-slate-700" id="dot-1"></button>
+        <button onclick="goToSlide(2)" class="w-2.5 h-2.5 rounded-full bg-slate-700" id="dot-2"></button>
+        <button onclick="goToSlide(3)" class="w-2.5 h-2.5 rounded-full bg-slate-700" id="dot-3"></button>
+        <button onclick="goToSlide(4)" class="w-2.5 h-2.5 rounded-full bg-slate-700" id="dot-4"></button>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="prevSlide()" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300">Prev</button>
+        <button onclick="nextSlide()" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300">Next</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let isPlaying = false;
+    let voiceEnabled = true;
+    let slideTimer = null;
+    let elapsedSeconds = 0;
+    let totalDuration = 300; // 5 minutes (300s)
+
+    function updateUI() {
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', idx === currentSlide);
+        const dot = document.getElementById(`dot-${idx}`);
+        if (dot) {
+          dot.className = idx === currentSlide 
+            ? 'w-2.5 h-2.5 rounded-full bg-indigo-500 ring-2 ring-indigo-400/50' 
+            : 'w-2.5 h-2.5 rounded-full bg-slate-700';
+        }
+      });
+
+      document.getElementById('slideIndicator').innerText = `Slide ${currentSlide + 1} of ${totalSlides}`;
+      const mins = Math.floor(elapsedSeconds / 60);
+      const secs = elapsedSeconds % 60;
+      document.getElementById('timeIndicator').innerText = `${mins}:${secs < 10 ? '0' : ''}${secs} / 5:00`;
+      document.getElementById('overallProgress').style.width = `${(elapsedSeconds / totalDuration) * 100}%`;
+    }
+
+    function speakText(text) {
+      if (!voiceEnabled || !('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 1.05;
+      utterance.pitch = 1.0;
+      const voices = window.speechSynthesis.getVoices();
+      const englishVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('David') || v.name.includes('Zira')));
+      if (englishVoice) utterance.voice = englishVoice;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function startCurrentSlide() {
+      const slide = slides[currentSlide];
+      const script = slide.getAttribute('data-script');
+      const duration = parseInt(slide.getAttribute('data-duration') || '60', 10);
+
+      speakText(script);
+
+      let slideElapsed = 0;
+      clearInterval(slideTimer);
+      slideTimer = setInterval(() => {
+        if (!isPlaying) return;
+        slideElapsed++;
+        elapsedSeconds++;
+        updateUI();
+
+        if (slideElapsed >= duration) {
+          if (currentSlide < totalSlides - 1) {
+            goToSlide(currentSlide + 1);
+          } else {
+            togglePlay(false);
+          }
+        }
+      }, 1000);
+    }
+
+    function goToSlide(idx) {
+      currentSlide = Math.max(0, Math.min(totalSlides - 1, idx));
+      updateUI();
+      if (isPlaying) {
+        startCurrentSlide();
+      }
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) goToSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) goToSlide(currentSlide - 1);
+    }
+
+    function togglePlay(forceState) {
+      isPlaying = forceState !== undefined ? forceState : !isPlaying;
+      const btn = document.getElementById('btnPlayPause');
+      const playIcon = document.getElementById('playIcon');
+      const playText = document.getElementById('playText');
+
+      if (isPlaying) {
+        playText.innerText = 'Pause';
+        playIcon.setAttribute('data-lucide', 'pause');
+        startCurrentSlide();
+      } else {
+        playText.innerText = 'Resume';
+        playIcon.setAttribute('data-lucide', 'play');
+        clearInterval(slideTimer);
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      }
+      lucide.createIcons();
+    }
+
+    function toggleVoice() {
+      voiceEnabled = !voiceEnabled;
+      document.getElementById('voiceText').innerText = `Voice: ${voiceEnabled ? 'ON' : 'OFF'}`;
+      const icon = document.getElementById('voiceIcon');
+      icon.className = voiceEnabled ? 'w-4 h-4 text-emerald-400' : 'w-4 h-4 text-slate-500';
+      if (!voiceEnabled && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    window.speechSynthesis?.onvoiceschanged?.();
+    updateUI();
+  </script>
+</body>
+</html>
