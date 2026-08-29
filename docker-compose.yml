@@ -1,0 +1,31 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:///./recoverx.db
+      - DEMO_MODE=true
+    volumes:
+      - backend_data:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_URL=http://backend:8000
+
+volumes:
+  backend_data:
