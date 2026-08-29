@@ -8,7 +8,7 @@ import {
 import {
   AlertTriangle, TrendingUp, DollarSign, Target,
   CreditCard, Wallet, Activity, PieChart as PieIcon,
-  ArrowRight, RefreshCw,
+  ArrowRight, RefreshCw, Sparkles,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -104,12 +104,18 @@ export default function Dashboard() {
   return (
     <div className="p-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold">Revenue Recovery Dashboard</h1>
           <p className="text-text-secondary mt-1">Real-time revenue risk monitoring and recovery intelligence</p>
         </div>
         <div className="flex items-center gap-3">
+          <Link
+            to="/what-if"
+            className="px-4 py-2 bg-gradient-to-r from-primary to-accent hover:from-primary-dark hover:to-accent-light text-white text-xs font-bold rounded-lg shadow transition-all flex items-center gap-1.5"
+          >
+            <Sparkles className="w-3.5 h-3.5" /> Test Custom Data <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
           <button onClick={fetchData} className="p-2 hover:bg-surface-light rounded-lg transition-colors">
             <RefreshCw className="w-4 h-4 text-text-secondary" />
           </button>
@@ -118,6 +124,25 @@ export default function Dashboard() {
             <span className="text-xs font-medium text-warning">DEMO MODE</span>
           </div>
         </div>
+      </div>
+
+      {/* Interactive Custom Simulator Banner */}
+      <div className="mb-8 p-4 rounded-xl bg-gradient-to-r from-primary/15 via-surface-light to-accent/15 border border-primary/30 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-lg bg-primary/20 flex items-center justify-center text-primary shrink-0">
+            <Target className="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h3 className="text-sm font-bold text-text-primary">Interactive Counterfactual Playground</h3>
+            <p className="text-xs text-text-secondary">Input your own amounts, UPI/Card failure reasons, customer segments, and DND rules to watch the AI Twin simulate competing actions live.</p>
+          </div>
+        </div>
+        <Link
+          to="/what-if"
+          className="px-4 py-2 bg-surface-lighter hover:bg-surface-light border border-border hover:border-primary/40 text-text-primary text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 shrink-0"
+        >
+          Open Custom Simulator <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
       </div>
 
       {/* Primary KPIs */}
