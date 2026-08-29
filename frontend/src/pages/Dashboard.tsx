@@ -12,7 +12,8 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const formatCurrency = (val: number): string => {
+const formatCurrency = (val: number | undefined | null): string => {
+  if (val === undefined || val === null || isNaN(val)) return '₹0';
   if (val >= 10000000) return `₹${(val / 10000000).toFixed(2)}Cr`;
   if (val >= 100000) return `₹${(val / 100000).toFixed(2)}L`;
   if (val >= 1000) return `₹${(val / 1000).toFixed(1)}K`;

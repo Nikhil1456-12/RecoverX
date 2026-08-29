@@ -11,7 +11,10 @@ const statusColors: Record<string, string> = {
   pending: 'bg-warning/10 text-warning border-warning/20',
 };
 
-const formatCurrency = (val: number) => `₹${val.toLocaleString('en-IN', { minimumFractionDigits: 0 })}`;
+const formatCurrency = (val: number | undefined | null) => {
+  if (val === undefined || val === null || isNaN(val)) return '₹0';
+  return `₹${val.toLocaleString('en-IN', { minimumFractionDigits: 0 })}`;
+};
 
 export default function Transactions() {
   const [transactions, setTransactions] = useState<any[]>([]);

@@ -4,7 +4,10 @@ import { useSearchParams } from 'react-router-dom';
 import { FlaskConical, Search, ChevronRight } from 'lucide-react';
 import { clsx } from 'clsx';
 
-const formatCurrency = (val: number) => `₹${val.toLocaleString('en-IN')}`;
+const formatCurrency = (val: number | undefined | null) => {
+  if (val === undefined || val === null || isNaN(val)) return '₹0';
+  return `₹${val.toLocaleString('en-IN')}`;
+};
 
 const actionLabels: Record<string, string> = {
   retry_now: 'Retry Now',

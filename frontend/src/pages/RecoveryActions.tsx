@@ -3,7 +3,10 @@ import { api } from '@/services/api';
 import { Zap, CheckCircle, XCircle } from 'lucide-react';
 import { clsx } from 'clsx';
 
-const formatCurrency = (val: number) => `₹${val.toLocaleString('en-IN')}`;
+const formatCurrency = (val: number | undefined | null) => {
+  if (val === undefined || val === null || isNaN(val)) return '₹0';
+  return `₹${val.toLocaleString('en-IN')}`;
+};
 
 export default function RecoveryActions() {
   const [data, setData] = useState<any>(null);

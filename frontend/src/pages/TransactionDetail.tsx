@@ -4,7 +4,10 @@ import { api } from '@/services/api';
 import { ArrowLeft, User, CreditCard, Clock, AlertCircle, CheckCircle, XCircle, Zap, Shield, ChevronRight } from 'lucide-react';
 import { clsx } from 'clsx';
 
-const formatCurrency = (val: number) => `₹${val.toLocaleString('en-IN')}`;
+const formatCurrency = (val: number | undefined | null) => {
+  if (val === undefined || val === null || isNaN(val)) return '₹0';
+  return `₹${val.toLocaleString('en-IN')}`;
+};
 
 const stateColors: Record<string, string> = {
   detected: 'text-warning',
